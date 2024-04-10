@@ -1,6 +1,6 @@
 export default function App() {
   return (
-    <h1 className="text-white">
+    <h1>
       hello
     </h1>
   )

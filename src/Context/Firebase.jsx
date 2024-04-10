@@ -3,7 +3,7 @@ import { app } from "./FireData";
 
 const FirebaseContext = createContext(null);
 
-export const useFirebase = () => useContext(FirebaseContext);
+export const useFirebase = () => useContext(FirebaseContext);// custom hook 
 
 export const FirebaseProvider = (props) => {
     return (

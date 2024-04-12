@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useFirebase } from '../Context/Firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const List = () => {
 
   const firebase=useFirebase()
@@ -14,6 +18,12 @@ const List = () => {
     e.preventDefault();
     console.log('Submitting form...', { name, email, coverPic,isbnNumber });
     firebase.handleCreateNewListing(name,isbnNumber,price,coverPic)
+    setName('')
+    setEmail('')
+    setCoverPic('')
+    setisbnNumber('')
+    setprice('')
+    toast("success full upload")
   };
 
   return (
@@ -43,6 +53,7 @@ const List = () => {
           Submit
         </button>
       </div>
+      <ToastContainer />
     </form>
   );
 };

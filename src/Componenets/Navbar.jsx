@@ -20,7 +20,7 @@ const Firebase=useFirebase()
 
             <li><Link to="/Register" className=" font-extrabold text-gray-800 hover:text-blue-500">Create a new Account</Link></li>
 <div className='flex flex-end  items-end'>
-            <li><Link to="/Login" className=" font-extrabold text-gray-800 hover:text-blue-500">{Firebase.isLoogedIN?`You re now signed(if your are sign in  you will go back home when clik ) `: `signing up  🆕 (go to login poge) `}</Link></li>
+            <li><Link to="/Login" className=" font-extrabold text-gray-800 hover:text-blue-500">{Firebase.isLoogedIN?`You re now signed(if u try to sign in again you will go back home ) `: `signing up  🆕 (go to login poge) `}</Link></li>
             </div>
           </ul>
         </nav>

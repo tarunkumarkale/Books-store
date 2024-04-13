@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { app } from "./FireData";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
-import { getStorage, ref, uploadBytes } from "firebase/storage";// storage we only share audio ,pic,video
+import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage";// storage we only share audio ,pic,video
 import { addDoc, collection, getFirestore,getDocs } from "firebase/firestore";
 
 const FirebaseContext = createContext(null);
@@ -55,15 +55,18 @@ export const FirebaseProvider = (props) => {
     });
   };
 
-
-
-
   const ListallBooks=()=>{
     return getDocs(collection(firestore,"books"))
   }
-    
+
+
+  const getImageUrl = (path) => {
+return getDownloadURL(ref(Storage,path)) // Return the download URL of the file
+  }
+
+
   return (
-    <FirebaseContext.Provider value={{ handleCreateNewListing, signupUserEmailAndPass, createsignInWithEmailAndPassword, signINwithGoogle, isLoogedIN,ListallBooks }}>
+    <FirebaseContext.Provider value={{ handleCreateNewListing, signupUserEmailAndPass, createsignInWithEmailAndPassword, signINwithGoogle, isLoogedIN,ListallBooks,getImageUrl}}>
       {props.children}
     </FirebaseContext.Provider>
   );

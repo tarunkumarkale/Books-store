@@ -6,6 +6,7 @@ import Cards from './Cards'
 
 const Home = () => {
 
+
 const firebase=useFirebase()
 const [show,setshow]=useState([])
 useEffect(()=>{
@@ -15,7 +16,7 @@ useEffect(()=>{
     return (
     <div>
       {
-        show.map((book,index)=> <Cards key={index} {...book.data()} />)
+        show.map((book,index)=> <Cards  key={index} {...book.data()} />)
       }
     </div>
   )

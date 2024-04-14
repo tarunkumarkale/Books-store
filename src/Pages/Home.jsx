@@ -16,7 +16,7 @@ useEffect(()=>{
     return (
     <div>
       {
-        show.map((book,index)=> <Cards  key={index} {...book.data()} />)
+        show.map((book,index)=> <Cards  key={index}   id={book.id}  {...book.data()} />)
       }
     </div>
   )

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFirebase } from '../Context/Firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const List = () => {
@@ -12,7 +13,7 @@ const List = () => {
   const [coverPic, setCoverPic] = useState('');
   const [isbnNumber, setisbnNumber] = useState('');
   const [price, setprice] = useState('');
-
+const navii=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ const List = () => {
     setisbnNumber('')
     setprice('')
     toast("success full upload")
+
   };
 
   return (

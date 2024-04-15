@@ -23,20 +23,28 @@ const Navigate=useNavigate()
   }, [firebase, imageURL]);
 console.log(id)
   return (
-    <div className='flex flex-row'>
-      <div className="m-8 bg-white rounded-lg shadow-md p-4 flex flex-col mt-5 w-[30%] flex-wrap justify-center">
-        <img src={url} alt={name} className="w-60 h-auto rounded-lg mr-2" />
-        <div>
-          <h2 className="text-xl font-bold mb-2">{name}</h2>
-          <p className="text-gray-700 text-center text-2xl font-semibold">Price:{price}</p>
-          <button onClick={e=>Navigate(`/view/${id}`)} className= "ml-[38%] bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">
+  
+
+   <div className="bg-black rounded-lg shadow-2xl p-4 flex flex-col align-middle w-[20%] m-3 hover:-translate-y-1 hover:scale-105">
+      <img src={url} alt='image' className="w-[100%] h-auto rounded-lg mx-auto" />
+     <h1 className="text-center uppercase text-white font-bold">{name}</h1>
+    <h1 className="text-center text-white font-semibold">Price:{price}</h1>
+    <button onClick={e => Navigate(`/view/${id}`)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto">
       View
-    </button>
-    {/* button kaa kaam hai onclikc data nevigate to detail product mene bss id ly bss */}
-        </div>
-      </div>
-    </div>
-  );
+     </button>
+   </div>
+      
+      
+    
+
+  
+    // {/* button kaa kaam hai onclikc data nevigate to detail product mene bss id ly bss */}
+   
+  )
 };
 
 export default Cards;
+
+
+
+

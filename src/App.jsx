@@ -10,6 +10,7 @@ import Detail from './Pages/Detail';
 const App = () => {
   return (
     <>
+    {/* in case of firebase firestore  when we need data like name,id,etc like  means fetch  always use .data() */}
       <Router basename="/Books-store">
       <Navbar></Navbar>
         <Routes>

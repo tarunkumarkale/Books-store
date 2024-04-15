@@ -14,11 +14,17 @@ useEffect(()=>{
     
 },[])
     return (
-    <div>
-      {
-        show.map((book,index)=> <Cards  key={index}   id={book.id}  {...book.data()} />)
-      }
-    </div>
+ <>
+              <h1 className='text-white text-3xl font-bold text-center'>DC Comics Books Collections </h1>
+   <div className="flex flex-row flex-wrap  justify-between">
+    
+    {
+      show.map((book,index)=> <Cards  key={index}   id={book.id}  {...book.data()} />)
+    }
+  </div>
+ </>
+
+   
   )
 }
 

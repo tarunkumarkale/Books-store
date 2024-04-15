@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { app } from "./FireData";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage";// storage we only share audio ,pic,video
-import { addDoc, collection, getFirestore,getDocs,getDoc } from "firebase/firestore";
+import { addDoc, collection, getFirestore,getDocs,getDoc,doc } from "firebase/firestore";
 
 const FirebaseContext = createContext(null);
 
@@ -64,9 +64,9 @@ export const FirebaseProvider = (props) => {
 return getDownloadURL(ref(Storage,path)) // Return the download URL of the file
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// here we take a id when btn click on view  the product detail apper
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// here we take a id as a argument when btn click on view  the product detail apper by
 
-  const getById=async()=>{
+  const getById=async(id)=>{
     const docRef=doc(firestore,"books",id)  //firestore ke under books collection ke under id catch kr
 const result =await getDoc(docRef)  // fore single data getDoc
 return result

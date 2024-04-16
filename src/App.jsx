@@ -6,6 +6,8 @@ import Navbar from './Componenets/Navbar'
 import List from './Pages/List';
 import Home from './Pages/Home';
 import Detail from './Pages/Detail';
+import Orders from './Pages/Orders';
+import ViewOrderDetails from './Pages/ViewOrderDetails';
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="/Register" element={<Register/>} />
           <Route path="/List" element={<List/>} />
           <Route path="/view/:bookId" element={<Detail/>} />
+          <Route path="/view/Orders" element={<Orders/>} />
+          <Route path="/view/Orders/:bookId" element={<ViewOrderDetails/>} />
         </Routes>
       </Router>
     </>

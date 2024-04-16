@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { app } from "./FireData";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage";// storage we only share audio ,pic,video
-import { addDoc, collection, getFirestore,getDocs,getDoc,doc } from "firebase/firestore";
+import { addDoc, collection, getFirestore,getDocs,getDoc,doc,where,query } from "firebase/firestore";
 
 const FirebaseContext = createContext(null);
 
@@ -71,10 +71,43 @@ return getDownloadURL(ref(Storage,path)) // Return the download URL of the file
 const result =await getDoc(docRef)  // fore single data getDoc
 return result
   }
+//////////////////////////////////////////////////////////////////////////////////////////////
+//order first we add data in order collection then fetch order data
+const placeOrder=async(bookId,qty)=>{
+  const collectionRef=collection (firestore,"books",bookId,"order")  // firstore ke under books collection ke under bookid ke under make order collection create
+  const result=await addDoc(collectionRef,{
+    userID:user.uid,
+    userEmail:user.email,
+    dislplayName:user.displayName,
+    photoURL:user.photoURL,
+    qty:Number(qty)
+  }
+)
+return result;
+}
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// here we fetch my books mens we call book again  after clicking this  one of book we seee its order
+const fetchMyBooks=async(userId)=>{
+
+  const collectionRef=collection(firestore,"books");
+  const q=query(collectionRef,where("userID","==",userId))
+  const result=await getDocs(q)
+  console.log(result)
+  return result
+}
+
+//////////////////////////////////////now we collect data from orders
+
+const getOrders=async(bookId)=>{
+   const collectionRef=collection(firestore,"books",bookId,"order")
+   const result= await getDocs(collectionRef)
+   return result
+   
+}
 
   return (
-    <FirebaseContext.Provider value={{ handleCreateNewListing, signupUserEmailAndPass, createsignInWithEmailAndPassword, signINwithGoogle, isLoogedIN,ListallBooks,getImageUrl,getById}}>
+    <FirebaseContext.Provider value={{ handleCreateNewListing, signupUserEmailAndPass, createsignInWithEmailAndPassword, signINwithGoogle, isLoogedIN,ListallBooks,getImageUrl,getById,placeOrder,fetchMyBooks,user,getOrders}}>
       {props.children}
     </FirebaseContext.Provider>
   );

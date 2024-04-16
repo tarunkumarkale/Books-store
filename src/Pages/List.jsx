@@ -13,7 +13,7 @@ const List = () => {
   const [coverPic, setCoverPic] = useState('');
   const [isbnNumber, setisbnNumber] = useState('');
   const [price, setprice] = useState('');
-const navii=useNavigate()
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

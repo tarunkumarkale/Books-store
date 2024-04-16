@@ -19,7 +19,7 @@ useEffect(()=>{
    <div className="flex flex-row flex-wrap  justify-between">
     
     {
-      show.map((book,index)=> <Cards  key={index}   id={book.id}  {...book.data()} />)
+      show.map((book,index)=> <Cards   link={`/view/${book.id}`} key={index}   id={book.id}  {...book.data()} />)
     }
   </div>
  </>
